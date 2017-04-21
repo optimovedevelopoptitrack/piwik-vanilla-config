@@ -1,0 +1,17 @@
+# Any other attempt to access PHP files is forbidden
+location ~* ^.+\.php$ {
+        return 403;
+}
+# Redirect to the root if attempting to access a txt file.
+location ~* (?:DESIGN|(?:gpl|README|LICENSE)[^.]*|LEGALNOTICE)(?:\.txt)*$ {
+        return 302 /;
+}
+# Disallow access to several helper files.
+location ~* \.(?:bat|git|ini|sh|svn[^.]*|txt|tpl|xml)$ {
+        return 404;
+}
+# Disallow access to directories
+location ~ ^/(config|core|lang|misc|tmp)/ {
+        deny all;
+}
+
