@@ -1,0 +1,1 @@
+# piwik-vanilla-config
